@@ -38,7 +38,12 @@ app.set('trust proxy', 1);
 // can load images from /uploads. CORS still restricts API access.
 app.use(helmet({ crossOriginResourcePolicy: { policy: 'cross-origin' } }));
 
-const allowedOrigins = [env.CLIENT_URL, env.ADMIN_CLIENT_URL];
+const allowedOrigins = [
+  'http://localhost:5173', // Local Vite/React dev server
+  'http://localhost:3000', // Alternative local dev server
+  'https://hospital-frontend-chi-ten.vercel.app/', // Your live Vercel frontend
+  'https://hospital-admin-henna.vercel.app/'
+];
 app.use(
   cors({
     origin: (origin, callback) => {
